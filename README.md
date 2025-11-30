@@ -6,7 +6,7 @@ An intelligent sports shopping assistant powered by Google Cloud Platform, Agent
 
 ![Architecture Overview](https://img.shields.io/badge/GCP-Cloud%20Run-4285F4?style=for-the-badge&logo=google-cloud)
 ![AlloyDB](https://img.shields.io/badge/Database-AlloyDB-4285F4?style=for-the-badge&logo=google-cloud)
-![Gemini AI](https://img.shields.io/badge/AI-Gemini%202.0-8E75B2?style=for-the-badge&logo=google)
+![Gemini AI](https://img.shields.io/badge/AI-Gemini%202.5%20Flash-8E75B2?style=for-the-badge&logo=google)
 ![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react)
 
 ---
@@ -86,7 +86,7 @@ delivery_methods (per store) - Shipping options with pricing
 ### ✅ Google's AI Usage (+5)
 **Multi-Model AI Integration:**
 
-#### 1. **Gemini 2.0 Flash** - Primary Agent Brain
+#### 1. **Gemini 2.5 Flash** - Primary Agent Brain
 ```python
 from google.adk.models import Gemini
 
@@ -123,18 +123,7 @@ for product in products:
 - Understanding user intent beyond keyword matching
 - Personalized recommendations based on description similarity
 
-#### 3. **Imagen 3.0** - Product Image Generation
-All 100 product images were generated using `imagen-3.0-generate-002`:
-```python
-# Example: Generate product visualization
-imagen_response = imagen.generate_images(
-    prompt="Professional product photo of {product_name}, white background, studio lighting",
-    number_of_images=1,
-    aspect_ratio="1:1"
-)
-```
-
-#### 4. **Agent Development Kit (ADK)** - Orchestration Framework
+#### 3. **Agent Development Kit (ADK)** - Orchestration Framework
 ```python
 runner = Runner(
     app_name="finn",
@@ -166,7 +155,7 @@ async for event in runner.run_async(
 
 | Feature | Implementation | Technology Stack |
 |---------|---------------|------------------|
-| **Product Search** | Natural language query → Semantic search | Gemini 2.0, Text-Embedding-005, AlloyDB |
+| **Product Search** | Natural language query → Semantic search | Gemini 2.5 Flash, Text-Embedding-005, AlloyDB |
 | **Product Details** | Detailed specs with images | Cloud Storage, Dynamic rendering |
 | **Shopping Cart** | Add/remove items, quantity management | AlloyDB, React state |
 | **Store Locator** | Geospatial proximity search with maps | PostGIS, Leaflet.js, AlloyDB |
@@ -387,7 +376,7 @@ WHERE si.store_id = (SELECT nearest_store FROM user_location)
 ┌─────────────────────────────────────────────────────────────┐
 │                       AI Agent Layer                        │
 │  ┌──────────────────────────────────────────────────────┐  │
-│  │  ADK Agent with Gemini 2.0 Flash                     │  │
+│  │  ADK Agent with Gemini 2.5 Flash                     │  │
 │  │  • Multi-turn conversation context                   │  │
 │  │  • Tool calling orchestration                        │  │
 │  │  • Prompt engineering for structured output          │  │
@@ -410,9 +399,9 @@ WHERE si.store_id = (SELECT nearest_store FROM user_location)
 │                      Data Layer                             │
 │  ┌────────────────────┐  ┌────────────────────────────┐    │
 │  │  AlloyDB           │  │  Vertex AI Platform        │    │
-│  │  PostgreSQL 16     │  │  • Gemini 2.0 Flash        │    │
+│  │  PostgreSQL 16     │  │  • Gemini 2.5 Flash        │    │
 │  │  • Users           │  │  • Text-Embedding-005      │    │
-│  │  • Products        │  │  • Imagen 3.0              │    │
+│  │  • Products        │  │                            │    │
 │  │  • Stores          │  └────────────────────────────┘    │
 │  │  • Orders          │                                     │
 │  │  • Shopping Lists  │  ┌────────────────────────────┐    │
@@ -692,7 +681,7 @@ CREATE TABLE shopping_lists (
 └──────────────────────────────────────────────────────────────┘
                            ↓
 ┌──────────────────────────────────────────────────────────────┐
-│ 4. Gemini 2.0 Flash processes intent:                       │
+│ 4. Gemini 2.5 Flash processes intent:                       │
 │    • Recognizes: product search query                        │
 │    • Extracts keywords: "running shoes", "trail"             │
 │    • Selects tool: search_products                           │
@@ -1250,6 +1239,6 @@ For questions or issues:
 
 [![Cloud Run](https://img.shields.io/badge/Deployed%20on-Cloud%20Run-4285F4?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/run)
 [![AlloyDB](https://img.shields.io/badge/Database-AlloyDB-4285F4?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/alloydb)
-[![Gemini](https://img.shields.io/badge/AI-Gemini%202.0-8E75B2?style=for-the-badge&logo=google)](https://ai.google.dev/)
+[![Gemini](https://img.shields.io/badge/AI-Gemini%202.5%20Flash-8E75B2?style=for-the-badge&logo=google)](https://ai.google.dev/)
 
 </div>
